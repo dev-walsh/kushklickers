@@ -34,7 +34,7 @@ The ultimate cannabis-themed incremental clicker game on Telegram!
       const keyboard = {
         reply_markup: {
           inline_keyboard: [
-            [{ text: '🎮 Play KushKlicker', url: `https://${process.env.REPL_SLUG || 'kushklicker'}.${process.env.REPL_OWNER || 'user'}.repl.co?ref=${username}` }],
+            [{ text: '🎮 Play KushKlicker', web_app: { url: `https://workspace.runner.replit.dev?ref=${username}` } }],
             [{ text: '📊 Leaderboard', callback_data: 'leaderboard' }],
             [{ text: '🏆 Achievements', callback_data: 'achievements' }],
             [{ text: '💰 Wallet', callback_data: 'wallet' }]
@@ -99,7 +99,7 @@ Keep clicking to earn more! 🚀
         const keyboard = {
           reply_markup: {
             inline_keyboard: [
-              [{ text: '🎮 Continue Playing', url: `https://${process.env.REPL_SLUG || 'kushklicker'}.${process.env.REPL_OWNER || 'user'}.repl.co` }]
+              [{ text: '🎮 Continue Playing', web_app: { url: `https://workspace.runner.replit.dev` } }]
             ]
           }
         };
@@ -126,7 +126,7 @@ Keep clicking to earn more! 🚀
         const keyboard = {
           reply_markup: {
             inline_keyboard: [
-              [{ text: '🎮 Play Now', url: `https://${process.env.REPL_SLUG || 'kushklicker'}.${process.env.REPL_OWNER || 'user'}.repl.co` }]
+              [{ text: '🎮 Play Now', web_app: { url: `https://workspace.runner.replit.dev` } }]
             ]
           }
         };
