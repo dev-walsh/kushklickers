@@ -41,14 +41,23 @@ export function useGameState() {
   const { data: gameState, isLoading, error } = useQuery({
     queryKey: ['/api/players', playerId],
     enabled: !!playerId,
+    retry: (failureCount, error: any) => {
+      // If player not found, clear localStorage and try to create new player
+      if (error?.status === 404) {
+        localStorage.removeItem('kushKlickerPlayerId');
+        setPlayerId(null);
+        return false;
+      }
+      return failureCount < 3;
+    }
   });
 
   // Auto-income simulation
   useEffect(() => {
-    if (!gameState || !gameState.autoIncomePerHour || gameState.autoIncomePerHour === 0) return;
+    if (!gameState || typeof gameState !== 'object' || !('autoIncomePerHour' in gameState) || !gameState.autoIncomePerHour || gameState.autoIncomePerHour === 0) return;
 
     const interval = setInterval(() => {
-      const incomePerSecond = (gameState.autoIncomePerHour || 0) / 3600;
+      const incomePerSecond = ((gameState as any)?.autoIncomePerHour || 0) / 3600;
       
       queryClient.setQueryData(['/api/players', playerId], (oldData: any) => {
         if (!oldData) return oldData;
