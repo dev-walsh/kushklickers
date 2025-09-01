@@ -42,10 +42,11 @@ export function useGameState() {
     queryKey: ['/api/players', playerId],
     enabled: !!playerId,
     retry: (failureCount, error: any) => {
-      // If player not found, clear localStorage and try to create new player
-      if (error?.status === 404) {
+      // If player not found, clear localStorage and trigger re-initialization
+      if (error?.status === 404 && playerId) {
         localStorage.removeItem('kushKlickerPlayerId');
         setPlayerId(null);
+        window.location.reload(); // Force refresh to create new player
         return false;
       }
       return failureCount < 3;

@@ -2,7 +2,9 @@
 
 A Solana-based incremental clicker game inspired by Cookie Clicker with cannabis theming, designed for Telegram Web App deployment and portable Linux hosting.
 
-**✅ Successfully migrated to Replit environment** - All dependencies installed and server running cleanly on port 5000.
+**✅ Successfully migrated to Replit environment** - All dependencies installed, database configured, and server running cleanly on port 5000.
+
+**🤖 Bot Integration Ready** - Telegram and Discord bot frameworks implemented and ready for activation.
 
 ## 🎮 Game Features
 
@@ -21,10 +23,25 @@ A Solana-based incremental clicker game inspired by Cookie Clicker with cannabis
 # Development mode (current)
 npm run dev
 
+# Database setup (first time)
+npm run db:push
+
 # Production build
 npm run build
 npm start
 ```
+
+### Bot Integration
+To activate the Telegram and Discord bots:
+1. Set `TELEGRAM_BOT_TOKEN` in Replit secrets
+2. Set `DISCORD_BOT_TOKEN` in Replit secrets
+3. Restart the application
+
+Bot features:
+- Player account linking
+- Stats viewing
+- Leaderboard access
+- Game launch from chat
 
 ### Automatic Setup (For other environments)
 ```bash

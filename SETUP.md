@@ -3,15 +3,40 @@
 ## Overview
 KushKlicker is a cannabis-themed incremental clicker game with Solana blockchain integration and Telegram bot support. This guide will help you set up the game on any Linux machine for portable deployment.
 
-**✅ REPLIT MIGRATION COMPLETED**: The project has been successfully migrated to the Replit environment with all dependencies installed and configuration optimized for cloud hosting.
+**✅ REPLIT MIGRATION COMPLETED**: The project has been successfully migrated to the Replit environment with persistent database, bot integrations, and custom branding.
+
+### Latest Updates
+- ✅ PostgreSQL database configured and working
+- ✅ Telegram and Discord bot frameworks implemented
+- ✅ Custom green cannabis theme and logo integration
+- ✅ All dependencies installed and TypeScript compilation working
 
 ## System Requirements
 
 ### Replit Environment (Current)
 - ✅ Node.js 20 (installed)
-- ✅ All npm dependencies (installed)
+- ✅ All npm dependencies including bot libraries (installed)
+- ✅ PostgreSQL database (configured and running)
 - ✅ TypeScript compilation (working)
 - ✅ Server configuration (optimized for 0.0.0.0:5000)
+- ✅ Bot frameworks (Telegram + Discord ready)
+- ✅ Custom branding (green cannabis theme and logo)
+
+### Bot Setup
+To activate bots in Replit environment:
+1. Go to Secrets tab in Replit
+2. Add `TELEGRAM_BOT_TOKEN` with value: `7837565817:AAFXqggBg2KqdHMlOKWa0D7h-CkvnjRu6cw`
+3. Add `DISCORD_BOT_TOKEN` with value: `MTQxMjA0MzcxODU5NjIzMTIxMA.GYmxtE.pCU1H4r9__P4OMUgSfDWPw32OZGlQzqDZDPHBc`
+4. Restart the application workflow
+
+### Database Commands
+```bash
+# Push schema changes to database
+npm run db:push
+
+# Force push (if data loss warning)
+npm run db:push --force
+```
 
 ### For Local/Portable Deployment
 - Linux machine (Ubuntu, Debian, or similar)
