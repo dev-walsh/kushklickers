@@ -50,7 +50,21 @@ export class DiscordBot {
       }
     });
 
-    await this.client.login(this.token);
+    this.client.on('error', (error) => {
+      console.error('Discord client error:', error);
+    });
+
+    this.client.on('shardError', (error) => {
+      console.error('Discord shard error:', error);
+    });
+
+    try {
+      await this.client.login(this.token);
+    } catch (error) {
+      console.error('Failed to login to Discord:', error);
+      // Don't rethrow - just log and continue
+      console.log('Discord bot will remain disabled');
+    }
   }
 
   private async registerCommands() {
@@ -218,10 +232,10 @@ export class DiscordBot {
   }
 }
 
-export function startDiscordBot() {
+export async function startDiscordBot() {
   const token = process.env.DISCORD_BOT_TOKEN;
   
-  if (!token) {
+  if (!token || token.trim() === '' || token === 'undefined') {
     console.log('Discord bot token not found, skipping Discord bot initialization');
     return;
   }
@@ -231,5 +245,6 @@ export function startDiscordBot() {
     console.log('Discord bot starting...');
   } catch (error) {
     console.error('Failed to start Discord bot:', error);
+    console.log('Discord bot will be disabled due to configuration issues');
   }
 }
