@@ -1,4 +1,5 @@
 import { useState } from "react";
+import logoUrl from "@/assets/logo.png";
 
 export default function Header() {
   const [walletConnected, setWalletConnected] = useState(false);
@@ -19,8 +20,8 @@ export default function Header() {
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <i className="fas fa-cannabis text-primary-foreground text-xl"></i>
+            <div className="w-12 h-12 rounded-lg flex items-center justify-center">
+              <img src={logoUrl} alt="KushKlicker Logo" className="w-12 h-12 object-contain" />
             </div>
             <div>
               <h1 className="text-xl font-bold text-foreground" data-testid="text-game-title">Kush Klicker</h1>

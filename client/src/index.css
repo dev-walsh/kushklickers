@@ -4,25 +4,26 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(222, 84%, 5%);
-  --foreground: hsl(210, 40%, 98%);
-  --card: hsl(217, 33%, 17%);
-  --card-foreground: hsl(210, 40%, 98%);
-  --popover: hsl(217, 33%, 17%);
-  --popover-foreground: hsl(210, 40%, 98%);
-  --primary: hsl(142, 71%, 45%);
-  --primary-foreground: hsl(356, 29%, 15%);
-  --secondary: hsl(217, 33%, 17%);
-  --secondary-foreground: hsl(210, 40%, 98%);
-  --muted: hsl(217, 33%, 17%);
-  --muted-foreground: hsl(215, 20%, 65%);
-  --accent: hsl(24, 95%, 53%);
-  --accent-foreground: hsl(60, 9%, 98%);
+  /* Dark green cannabis theme matching logo */
+  --background: hsl(158, 64%, 4%);
+  --foreground: hsl(120, 17%, 95%);
+  --card: hsl(158, 27%, 8%);
+  --card-foreground: hsl(120, 17%, 95%);
+  --popover: hsl(158, 27%, 8%);
+  --popover-foreground: hsl(120, 17%, 95%);
+  --primary: hsl(120, 75%, 40%); /* Bright green like logo */
+  --primary-foreground: hsl(158, 64%, 4%);
+  --secondary: hsl(158, 27%, 8%);
+  --secondary-foreground: hsl(120, 17%, 95%);
+  --muted: hsl(158, 27%, 8%);
+  --muted-foreground: hsl(120, 10%, 65%);
+  --accent: hsl(75, 85%, 60%); /* Lime green accent */
+  --accent-foreground: hsl(158, 64%, 4%);
   --destructive: hsl(0, 63%, 31%);
-  --destructive-foreground: hsl(210, 40%, 98%);
-  --border: hsl(217, 33%, 17%);
-  --input: hsl(217, 33%, 17%);
-  --ring: hsl(142, 71%, 45%);
+  --destructive-foreground: hsl(120, 17%, 95%);
+  --border: hsl(158, 27%, 12%);
+  --input: hsl(158, 27%, 8%);
+  --ring: hsl(120, 75%, 40%);
   --radius: 0.75rem;
   --font-sans: 'Inter', system-ui, sans-serif;
 }
@@ -65,14 +66,16 @@
 
 @layer components {
   .kush-button {
-    background: linear-gradient(135deg, hsl(142, 71%, 45%), hsl(142, 71%, 35%));
+    background: linear-gradient(135deg, hsl(120, 75%, 40%), hsl(120, 75%, 30%));
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 20px hsl(142, 71%, 45% / 0.3);
+    box-shadow: 0 0 30px hsl(120, 75%, 40% / 0.4), 0 0 60px hsl(75, 85%, 60% / 0.2);
+    border: 2px solid hsl(75, 85%, 60% / 0.3);
   }
 
   .kush-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 40px hsl(142, 71%, 45% / 0.6);
+    box-shadow: 0 0 50px hsl(120, 75%, 40% / 0.7), 0 0 100px hsl(75, 85%, 60% / 0.4);
+    border-color: hsl(75, 85%, 60% / 0.6);
   }
 
   .kush-button:active {
@@ -88,7 +91,7 @@
   }
 
   .gradient-border {
-    background: linear-gradient(135deg, hsl(142, 71%, 45%), hsl(24, 95%, 53%));
+    background: linear-gradient(135deg, hsl(120, 75%, 40%), hsl(75, 85%, 60%));
     padding: 2px;
     border-radius: 12px;
   }
