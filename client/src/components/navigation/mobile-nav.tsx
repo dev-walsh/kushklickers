@@ -1,4 +1,4 @@
-type GameSection = 'game' | 'upgrades' | 'casino' | 'achievements' | 'leaderboard' | 'wallet' | 'referral';
+type GameSection = 'game' | 'upgrades' | 'achievements' | 'leaderboard' | 'wallet' | 'referral';
 
 interface MobileNavProps {
   currentSection: GameSection;
@@ -9,7 +9,6 @@ export default function MobileNav({ currentSection, onSectionChange }: MobileNav
   const navItems = [
     { id: 'game', icon: 'fas fa-cannabis', label: 'Mine' },
     { id: 'upgrades', icon: 'fas fa-bolt', label: 'Upgrades' },
-    { id: 'casino', icon: 'fas fa-dice', label: 'Casino' },
     { id: 'achievements', icon: 'fas fa-trophy', label: 'Goals' },
     { id: 'leaderboard', icon: 'fas fa-crown', label: 'Leaders' },
     { id: 'wallet', icon: 'fas fa-coins', label: 'Wallet' },

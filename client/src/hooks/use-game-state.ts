@@ -24,10 +24,16 @@ export function useGameState() {
         }
       }
       
-      // Create new player with a random username
-      const username = `player_${Math.random().toString(36).substr(2, 9)}`;
+      // Get Telegram user data if available
+      const tgData = (window as any).Telegram?.WebApp?.initDataUnsafe;
+      const telegramUserId = tgData?.user?.id?.toString();
+      const telegramUsername = tgData?.user?.username ? `@${tgData.user.username}` : null;
+      
+      // Create new player with Telegram data or fallback to random username
+      const username = telegramUsername || `player_${Math.random().toString(36).substr(2, 9)}`;
       try {
         const response = await apiRequest('POST', '/api/players', {
+          telegramUserId: telegramUserId || null,
           username,
           totalKush: 0,
           totalClicks: 0,
@@ -83,6 +89,7 @@ export function useGameState() {
 
   const defaultGameState = {
     id: playerId || '',
+    telegramUserId: null,
     username: 'player',
     totalKush: 0,
     totalClicks: 0,

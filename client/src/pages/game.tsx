@@ -9,10 +9,9 @@ import AchievementList from "@/components/achievements/achievement-list";
 import Leaderboard from "@/components/leaderboard/leaderboard";
 import WalletSection from "@/components/wallet/wallet-section";
 import ReferralSection from "@/components/referral/referral-section";
-import CasinoSection from "@/components/casino/casino-section";
 import { useGameState } from "@/hooks/use-game-state";
 
-type GameSection = 'game' | 'upgrades' | 'casino' | 'achievements' | 'leaderboard' | 'wallet' | 'referral';
+type GameSection = 'game' | 'upgrades' | 'achievements' | 'leaderboard' | 'wallet' | 'referral';
 
 export default function Game() {
   const [currentSection, setCurrentSection] = useState<GameSection>('game');
@@ -81,12 +80,6 @@ export default function Game() {
           </section>
         )}
 
-        {/* Casino Section */}
-        {currentSection === 'casino' && (
-          <section className="game-section" data-testid="section-casino">
-            <CasinoSection gameState={gameState} />
-          </section>
-        )}
 
         {/* Achievements Section */}
         {currentSection === 'achievements' && (

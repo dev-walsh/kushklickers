@@ -205,6 +205,7 @@ export class MemStorage implements IStorage {
     const player: Player = { 
       ...insertPlayer, 
       id,
+      telegramUserId: insertPlayer.telegramUserId || null,
       totalKush: insertPlayer.totalKush || 0,
       totalClicks: insertPlayer.totalClicks || 0,
       perClickMultiplier: insertPlayer.perClickMultiplier || 1,

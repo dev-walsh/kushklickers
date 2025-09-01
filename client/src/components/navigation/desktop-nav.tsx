@@ -1,4 +1,4 @@
-type GameSection = 'game' | 'upgrades' | 'casino' | 'achievements' | 'leaderboard' | 'wallet' | 'referral';
+type GameSection = 'game' | 'upgrades' | 'achievements' | 'leaderboard' | 'wallet' | 'referral';
 
 interface DesktopNavProps {
   currentSection: GameSection;
@@ -9,7 +9,6 @@ export default function DesktopNav({ currentSection, onSectionChange }: DesktopN
   const navItems = [
     { id: 'game', icon: 'fas fa-cannabis' },
     { id: 'upgrades', icon: 'fas fa-bolt' },
-    { id: 'casino', icon: 'fas fa-dice' },
     { id: 'achievements', icon: 'fas fa-trophy' },
     { id: 'leaderboard', icon: 'fas fa-crown' },
     { id: 'wallet', icon: 'fas fa-coins' },

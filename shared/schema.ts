@@ -5,14 +5,15 @@ import { z } from "zod";
 
 export const players = pgTable("players", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  username: text("username").notNull().unique(),
+  telegramUserId: text("telegram_user_id"), // Telegram user ID for identification
+  username: text("username").notNull().unique(), // Telegram username with @
   totalKush: integer("total_kush").notNull().default(0),
   totalClicks: integer("total_clicks").notNull().default(0),
   perClickMultiplier: integer("per_click_multiplier").notNull().default(1),
   autoIncomePerHour: integer("auto_income_per_hour").notNull().default(0),
   claimableTokens: integer("claimable_tokens").notNull().default(0),
   walletAddress: text("wallet_address"),
-  referredBy: text("referred_by"),
+  referredBy: text("referred_by"), // Will store Telegram @username
   createdAt: timestamp("created_at").notNull().default(sql`now()`),
   lastActive: timestamp("last_active").notNull().default(sql`now()`),
 });

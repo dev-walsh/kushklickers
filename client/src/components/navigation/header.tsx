@@ -1,7 +1,7 @@
 import { useState } from "react";
 import logoUrl from "@/assets/logo.png";
 
-type GameSection = 'game' | 'upgrades' | 'casino' | 'achievements' | 'leaderboard' | 'wallet' | 'referral';
+type GameSection = 'game' | 'upgrades' | 'achievements' | 'leaderboard' | 'wallet' | 'referral';
 
 interface HeaderProps {
   currentSection?: GameSection;
@@ -65,13 +65,6 @@ export default function Header({ currentSection, onSectionChange }: HeaderProps 
                 data-testid="link-wallet"
               >
                 <i className="fas fa-wallet mr-1"></i> Wallet
-              </button>
-              <button 
-                onClick={() => onSectionChange?.('casino')}
-                className={`transition-colors ${currentSection === 'casino' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`} 
-                data-testid="link-casino"
-              >
-                <i className="fas fa-dice mr-1"></i> Casino
               </button>
             </div>
             
