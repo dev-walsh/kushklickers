@@ -1,19 +1,37 @@
 import { SolanaWallet } from './solana-wallet';
+import TelegramConnect from '@/components/telegram/telegram-connect';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface WalletSectionProps {
   gameState: {
+    id: string;
     totalKush: number;
     claimableTokens: number;
+    telegramUserId?: string | null;
+    username: string;
   };
 }
 
 export default function WalletSection({ gameState }: WalletSectionProps) {
+  const queryClient = useQueryClient();
+
+  const handleTelegramConnectionUpdate = () => {
+    // Invalidate player query to refresh data
+    queryClient.invalidateQueries({ queryKey: ['/api/players', gameState.id] });
+  };
+
   return (
     <div className="container mx-auto px-4 py-6 max-w-4xl">
       <div className="flex items-center space-x-3 mb-6">
         <i className="fas fa-wallet text-blue-400 text-2xl"></i>
-        <h2 className="text-2xl font-bold text-foreground" data-testid="text-wallet-title">Solana Wallet</h2>
+        <h2 className="text-2xl font-bold text-foreground" data-testid="text-wallet-title">Wallet & Account</h2>
       </div>
+
+      {/* Telegram Connection Section */}
+      <TelegramConnect 
+        gameState={gameState} 
+        onConnectionUpdate={handleTelegramConnectionUpdate}
+      />
 
       <SolanaWallet gameState={gameState} />
 
