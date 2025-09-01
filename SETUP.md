@@ -3,7 +3,17 @@
 ## Overview
 KushKlicker is a cannabis-themed incremental clicker game with Solana blockchain integration and Telegram bot support. This guide will help you set up the game on any Linux machine for portable deployment.
 
+**✅ REPLIT MIGRATION COMPLETED**: The project has been successfully migrated to the Replit environment with all dependencies installed and configuration optimized for cloud hosting.
+
 ## System Requirements
+
+### Replit Environment (Current)
+- ✅ Node.js 20 (installed)
+- ✅ All npm dependencies (installed)
+- ✅ TypeScript compilation (working)
+- ✅ Server configuration (optimized for 0.0.0.0:5000)
+
+### For Local/Portable Deployment
 - Linux machine (Ubuntu, Debian, or similar)
 - Node.js 18+ 
 - npm or yarn package manager

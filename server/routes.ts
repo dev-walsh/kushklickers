@@ -230,6 +230,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         totalKush: updatedPlayer!.totalKush 
       });
     } catch (error) {
+      console.error("Click error:", error);
       res.status(500).json({ message: "Internal server error" });
     }
   });

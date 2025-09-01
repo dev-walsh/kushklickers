@@ -210,7 +210,7 @@ export class MemStorage implements IStorage {
     this.players.set(id, player);
     
     // Initialize player achievements
-    for (const [achievementId] of Array.from(this.achievements.keys())) {
+    for (const achievementId of Array.from(this.achievements.keys())) {
       const playerAchievementId = randomUUID();
       this.playerAchievements.set(playerAchievementId, {
         id: playerAchievementId,

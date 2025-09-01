@@ -2,6 +2,8 @@
 
 A Solana-based incremental clicker game inspired by Cookie Clicker with cannabis theming, designed for Telegram Web App deployment and portable Linux hosting.
 
+**✅ Successfully migrated to Replit environment** - All dependencies installed and server running cleanly on port 5000.
+
 ## 🎮 Game Features
 
 - **Incremental Clicker Mechanics**: Click to earn KUSH tokens with upgrades
@@ -12,23 +14,22 @@ A Solana-based incremental clicker game inspired by Cookie Clicker with cannabis
 
 ## 🚀 Quick Start
 
-### Automatic Setup (Recommended)
+### Replit Environment (Current)
+**The application is ready to run!** Simply start the "Start application" workflow.
+
+```bash
+# Development mode (current)
+npm run dev
+
+# Production build
+npm run build
+npm start
+```
+
+### Automatic Setup (For other environments)
 ```bash
 chmod +x deploy.sh
 ./deploy.sh
-```
-
-### Manual Setup
-```bash
-# Install dependencies
-npm install
-
-# Create environment file
-cp .env.example .env
-
-# Build and start
-npm run build
-npm start
 ```
 
 Game will be available at: http://localhost:5000
