@@ -41,42 +41,31 @@ export default function Game() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-green-900/20 to-slate-900" data-testid="game-container">
-      <Header />
+    <div className="h-screen bg-gradient-to-br from-slate-900 via-green-900/20 to-slate-900 flex flex-col overflow-hidden" data-testid="game-container">
+      <Header currentSection={currentSection} onSectionChange={setCurrentSection} />
       <MobileNav currentSection={currentSection} onSectionChange={setCurrentSection} />
       <DesktopNav currentSection={currentSection} onSectionChange={setCurrentSection} />
 
       {/* Main Content */}
-      <main className="pt-20 pb-20 md:pb-4 md:pl-16 min-h-screen">
+      <main className="flex-1 pt-16 pb-16 md:pb-4 md:pl-16 overflow-y-auto game-container">
         
         {/* Game Section */}
         {currentSection === 'game' && (
-          <section className="game-section" data-testid="section-game">
-            <div className="container mx-auto px-4 py-6 max-w-4xl">
+          <section className="game-section h-full" data-testid="section-game">
+            <div className="container mx-auto px-2 md:px-4 py-2 md:py-6 max-w-4xl h-full flex flex-col">
               
-              {/* Hero Banner */}
-              <div className="bg-gradient-to-r from-primary/20 to-accent/20 rounded-xl p-4 mb-6 text-center border border-primary/30">
-                <div className="inline-flex items-center space-x-2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium mb-2">
-                  <i className="fas fa-broadcast-tower"></i>
-                  <span>Now Live on Telegram</span>
+              {/* Compact Mobile Banner */}
+              <div className="bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg p-2 md:p-4 mb-3 md:mb-6 text-center border border-primary/30 mobile-compact">
+                <div className="inline-flex items-center space-x-1 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium mb-1">
+                  <i className="fas fa-broadcast-tower text-xs"></i>
+                  <span className="mobile-text">Live on Telegram</span>
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-                  Mine Cannabis<br />
-                  <span className="text-primary">Earn Real Crypto</span>
+                <h2 className="text-lg md:text-3xl font-bold text-foreground mb-1 md:mb-2">
+                  <span className="text-primary">KUSH Klicker</span>
                 </h2>
-                <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto mb-4">
-                  The ultimate incremental clicker game where every click grows your virtual cannabis empire and earns you real KUSH tokens on the Solana blockchain.
+                <p className="text-muted-foreground text-xs md:text-base max-w-2xl mx-auto mb-2 md:mb-4 mobile-text">
+                  Click to mine cannabis and earn crypto tokens
                 </p>
-                <div className="flex flex-wrap justify-center gap-3">
-                  <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2" data-testid="button-play">
-                    <i className="fas fa-play"></i>
-                    <span>Play Kush Klicker</span>
-                  </button>
-                  <button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2" data-testid="button-whitepaper">
-                    <i className="fas fa-file-alt"></i>
-                    <span>Read Whitepaper</span>
-                  </button>
-                </div>
               </div>
 
               <StatsDisplay gameState={gameState} />

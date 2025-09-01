@@ -102,16 +102,20 @@
   }
 
   .nav-btn {
-    @apply flex flex-col items-center justify-center space-y-1 p-2 rounded-lg text-muted-foreground transition-all duration-200 hover:text-primary;
+    @apply flex flex-col items-center justify-center space-y-1 p-3 rounded-lg text-muted-foreground transition-all duration-200 hover:text-primary cursor-pointer;
+    min-width: 44px;
+    min-height: 44px;
   }
   
   .nav-btn:hover {
     background-color: hsl(var(--primary) / 0.1);
+    transform: scale(1.05);
   }
 
   .nav-btn.active {
     @apply text-primary;
     background-color: hsl(var(--primary) / 0.2);
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.3);
   }
 
   .nav-btn span {
@@ -174,10 +178,32 @@
   }
 }
 
-/* Mobile navigation styles */
+/* Telegram Web App Mobile Optimization */
 @media (max-width: 768px) {
   .nav-btn {
-    @apply p-3;
+    @apply p-2 text-xs;
+  }
+  
+  /* Optimize button sizes for touch */
+  .kush-button {
+    min-height: 60px;
+    touch-action: manipulation;
+  }
+  
+  /* Compact mobile layout */
+  .game-container {
+    padding: 8px;
+    gap: 12px;
+  }
+  
+  /* Smaller text for mobile */
+  .mobile-text {
+    font-size: 14px;
+  }
+  
+  /* Reduce margins for mobile */
+  .mobile-compact {
+    margin: 4px 0;
   }
 }
 
@@ -189,5 +215,22 @@
   
   .nav-btn span {
     @apply hidden;
+  }
+}
+
+/* Telegram-specific optimizations */
+@media screen and (max-height: 600px) {
+  /* For short screens like Telegram mini apps */
+  .compact-mode {
+    padding: 4px;
+    font-size: 12px;
+  }
+  
+  .game-header {
+    padding: 8px;
+  }
+  
+  .navigation-bar {
+    height: 60px;
   }
 }

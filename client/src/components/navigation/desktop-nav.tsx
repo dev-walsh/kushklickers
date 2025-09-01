@@ -17,8 +17,8 @@ export default function DesktopNav({ currentSection, onSectionChange }: DesktopN
   ];
 
   return (
-    <nav className="hidden md:block fixed left-0 top-20 bottom-0 w-16 bg-card/80 backdrop-blur-md border-r border-border z-40" data-testid="desktop-nav">
-      <div className="flex flex-col items-center py-4 space-y-4">
+    <nav className="hidden md:block fixed left-0 top-20 bottom-0 w-16 bg-card/95 backdrop-blur-md border-r border-border z-50" data-testid="desktop-nav">
+      <div className="flex flex-col items-center py-4 space-y-2">
         {navItems.map((item) => (
           <button
             key={item.id}

@@ -17,7 +17,7 @@ export default function MobileNav({ currentSection, onSectionChange }: MobileNav
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-card/95 backdrop-blur-md border-t border-border md:hidden" data-testid="mobile-nav">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-t border-border md:hidden" data-testid="mobile-nav">
       <div className="flex items-center justify-around py-2">
         {navItems.map((item) => (
           <button

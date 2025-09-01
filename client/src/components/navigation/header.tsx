@@ -1,7 +1,14 @@
 import { useState } from "react";
 import logoUrl from "@/assets/logo.png";
 
-export default function Header() {
+type GameSection = 'game' | 'upgrades' | 'casino' | 'achievements' | 'leaderboard' | 'wallet' | 'referral';
+
+interface HeaderProps {
+  currentSection?: GameSection;
+  onSectionChange?: (section: GameSection) => void;
+}
+
+export default function Header({ currentSection, onSectionChange }: HeaderProps = {}) {
   const [walletConnected, setWalletConnected] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
 
@@ -16,7 +23,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-md border-b border-border" data-testid="header">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border" data-testid="header">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -31,21 +38,41 @@ export default function Header() {
           
           <div className="flex items-center space-x-3">
             <div className="hidden md:flex items-center space-x-4 text-sm">
-              <a href="#" className="text-primary hover:text-primary/80 transition-colors" data-testid="link-features">
-                <i className="fas fa-zap mr-1"></i> Features
-              </a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors" data-testid="link-leaderboard">
+              <button 
+                onClick={() => onSectionChange?.('upgrades')}
+                className={`transition-colors ${currentSection === 'upgrades' ? 'text-primary' : 'text-primary hover:text-primary/80'}`} 
+                data-testid="link-features"
+              >
+                <i className="fas fa-zap mr-1"></i> Upgrades
+              </button>
+              <button 
+                onClick={() => onSectionChange?.('leaderboard')}
+                className={`transition-colors ${currentSection === 'leaderboard' ? 'text-primary' : 'text-foreground hover:text-primary'}`} 
+                data-testid="link-leaderboard"
+              >
                 <i className="fas fa-trophy mr-1"></i> Leaderboard
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-support">
-                <i className="fas fa-question-circle mr-1"></i> Support
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-whitepaper">
-                <i className="fas fa-file-alt mr-1"></i> Whitepaper
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-roadmap">
-                <i className="fas fa-road mr-1"></i> Roadmap
-              </a>
+              </button>
+              <button 
+                onClick={() => onSectionChange?.('achievements')}
+                className={`transition-colors ${currentSection === 'achievements' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`} 
+                data-testid="link-achievements"
+              >
+                <i className="fas fa-trophy mr-1"></i> Goals
+              </button>
+              <button 
+                onClick={() => onSectionChange?.('wallet')}
+                className={`transition-colors ${currentSection === 'wallet' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`} 
+                data-testid="link-wallet"
+              >
+                <i className="fas fa-wallet mr-1"></i> Wallet
+              </button>
+              <button 
+                onClick={() => onSectionChange?.('casino')}
+                className={`transition-colors ${currentSection === 'casino' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`} 
+                data-testid="link-casino"
+              >
+                <i className="fas fa-dice mr-1"></i> Casino
+              </button>
             </div>
             
             <button 
