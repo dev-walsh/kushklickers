@@ -1,0 +1,84 @@
+import { useState, useEffect } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+
+export function useGameState() {
+  const [playerId, setPlayerId] = useState<string | null>(null);
+  const queryClient = useQueryClient();
+
+  // Initialize or get player
+  useEffect(() => {
+    const initializePlayer = async () => {
+      const savedPlayerId = localStorage.getItem('kushKlickerPlayerId');
+      
+      if (savedPlayerId) {
+        setPlayerId(savedPlayerId);
+      } else {
+        // Create new player with a random username
+        const username = `player_${Math.random().toString(36).substr(2, 9)}`;
+        try {
+          const response = await apiRequest('POST', '/api/players', {
+            username,
+            totalKush: 0,
+            totalClicks: 0,
+            perClickMultiplier: 1,
+            autoIncomePerHour: 0,
+            claimableTokens: 0
+          });
+          const newPlayer = await response.json();
+          setPlayerId(newPlayer.id);
+          localStorage.setItem('kushKlickerPlayerId', newPlayer.id);
+        } catch (error) {
+          console.error('Failed to create player:', error);
+        }
+      }
+    };
+
+    initializePlayer();
+  }, []);
+
+  // Get player data
+  const { data: gameState, isLoading, error } = useQuery({
+    queryKey: ['/api/players', playerId],
+    enabled: !!playerId,
+  });
+
+  // Auto-income simulation
+  useEffect(() => {
+    if (!gameState || !gameState.autoIncomePerHour || gameState.autoIncomePerHour === 0) return;
+
+    const interval = setInterval(() => {
+      const incomePerSecond = (gameState.autoIncomePerHour || 0) / 3600;
+      
+      queryClient.setQueryData(['/api/players', playerId], (oldData: any) => {
+        if (!oldData) return oldData;
+        return {
+          ...oldData,
+          totalKush: Math.floor(oldData.totalKush + incomePerSecond)
+        };
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [gameState, playerId, queryClient]);
+
+  const defaultGameState = {
+    id: playerId || '',
+    username: 'player',
+    totalKush: 0,
+    totalClicks: 0,
+    perClickMultiplier: 1,
+    autoIncomePerHour: 0,
+    claimableTokens: 0,
+    walletAddress: null,
+    referredBy: null,
+    createdAt: new Date(),
+    lastActive: new Date()
+  };
+
+  return {
+    gameState: gameState || defaultGameState,
+    isLoading: isLoading && !gameState,
+    error
+  };
+}
