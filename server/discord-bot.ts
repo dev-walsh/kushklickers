@@ -9,9 +9,7 @@ export class DiscordBot {
     this.token = token;
     this.client = new Client({
       intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
+        GatewayIntentBits.Guilds
       ]
     });
 

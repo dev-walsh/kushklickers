@@ -81,10 +81,11 @@ KushKlicker is a cannabis-themed incremental clicker game built as a full-stack 
    - **Impact**: Clean compilation and better development experience
    - **Priority**: COMPLETED
 
-3. **NEW**: Bot Integration Framework
-   - **Status**: IMPLEMENTED - Telegram and Discord bots ready for activation
-   - **Features**: Player linking, stats viewing, leaderboards, game launch
-   - **Files**: `server/telegram-bot.ts`, `server/discord-bot.ts`
+3. **NEW**: Bot Integration Framework ✅ ACTIVE
+   - **Status**: RUNNING - Telegram and Discord bots active with .env configuration
+   - **Features**: Player linking, stats viewing, leaderboards, game launch buttons
+   - **Configuration**: Using .env file instead of Replit secrets for easier management
+   - **Files**: `server/telegram-bot.ts`, `server/discord-bot.ts`, `.env`
 
 4. **NEW**: Custom Branding Implementation
    - **Status**: COMPLETED - Green cannabis theme and logo integration

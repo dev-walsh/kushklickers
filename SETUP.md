@@ -22,12 +22,20 @@ KushKlicker is a cannabis-themed incremental clicker game with Solana blockchain
 - ✅ Bot frameworks (Telegram + Discord ready)
 - ✅ Custom branding (green cannabis theme and logo)
 
-### Bot Setup
-To activate bots in Replit environment:
-1. Go to Secrets tab in Replit
-2. Add `TELEGRAM_BOT_TOKEN` with value: `7837565817:AAFXqggBg2KqdHMlOKWa0D7h-CkvnjRu6cw`
-3. Add `DISCORD_BOT_TOKEN` with value: `MTQxMjA0MzcxODU5NjIzMTIxMA.GYmxtE.pCU1H4r9__P4OMUgSfDWPw32OZGlQzqDZDPHBc`
-4. Restart the application workflow
+### Bot Setup ✅ COMPLETED
+The bots are now configured via `.env` file:
+
+```env
+# Bot Tokens (already configured)
+TELEGRAM_BOT_TOKEN=7837565817:AAFXqggBg2KqdHMlOKWa0D7h-CkvnjRu6cw
+DISCORD_BOT_TOKEN=MTQxMjA0MzcxODU5NjIzMTIxMA.GYmxtE.pCU1H4r9__P4OMUgSfDWPw32OZGlQzqDZDPHBc
+
+# Server Configuration
+PORT=5000
+NODE_ENV=development
+```
+
+**Status**: ✅ Both bots are active and running
 
 ### Database Commands
 ```bash

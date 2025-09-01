@@ -31,17 +31,17 @@ npm run build
 npm start
 ```
 
-### Bot Integration
-To activate the Telegram and Discord bots:
-1. Set `TELEGRAM_BOT_TOKEN` in Replit secrets
-2. Set `DISCORD_BOT_TOKEN` in Replit secrets
-3. Restart the application
+### Bot Integration ✅ ACTIVE
+The bots are configured via `.env` file with your provided tokens:
+- 🤖 **Telegram Bot**: Active and ready for player interactions
+- 🎮 **Discord Bot**: Active with slash commands
 
 Bot features:
-- Player account linking
-- Stats viewing
-- Leaderboard access
-- Game launch from chat
+- Player account linking via `/link username`
+- Stats viewing with `/stats`
+- Leaderboard access via `/leaderboard`
+- Game launch buttons in chat
+- Welcome messages and help commands
 
 ### Automatic Setup (For other environments)
 ```bash

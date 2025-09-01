@@ -12,25 +12,34 @@ export function useGameState() {
       const savedPlayerId = localStorage.getItem('kushKlickerPlayerId');
       
       if (savedPlayerId) {
-        setPlayerId(savedPlayerId);
-      } else {
-        // Create new player with a random username
-        const username = `player_${Math.random().toString(36).substr(2, 9)}`;
+        // Verify player exists in database
         try {
-          const response = await apiRequest('POST', '/api/players', {
-            username,
-            totalKush: 0,
-            totalClicks: 0,
-            perClickMultiplier: 1,
-            autoIncomePerHour: 0,
-            claimableTokens: 0
-          });
-          const newPlayer = await response.json();
-          setPlayerId(newPlayer.id);
-          localStorage.setItem('kushKlickerPlayerId', newPlayer.id);
+          const response = await apiRequest('GET', `/api/players/${savedPlayerId}`);
+          if (response.ok) {
+            setPlayerId(savedPlayerId);
+            return;
+          }
         } catch (error) {
-          console.error('Failed to create player:', error);
+          // Player doesn't exist, create new one
         }
+      }
+      
+      // Create new player with a random username
+      const username = `player_${Math.random().toString(36).substr(2, 9)}`;
+      try {
+        const response = await apiRequest('POST', '/api/players', {
+          username,
+          totalKush: 0,
+          totalClicks: 0,
+          perClickMultiplier: 1,
+          autoIncomePerHour: 0,
+          claimableTokens: 0
+        });
+        const newPlayer = await response.json();
+        setPlayerId(newPlayer.id);
+        localStorage.setItem('kushKlickerPlayerId', newPlayer.id);
+      } catch (error) {
+        console.error('Failed to create player:', error);
       }
     };
 
