@@ -5,11 +5,16 @@ import { insertPlayerSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Get player by username
-  app.get("/api/players/:username", async (req, res) => {
+  // Get player by ID or username
+  app.get("/api/players/:identifier", async (req, res) => {
     try {
-      const { username } = req.params;
-      const player = await storage.getPlayerByUsername(username);
+      const { identifier } = req.params;
+      
+      // Try to get by ID first, then by username
+      let player = await storage.getPlayer(identifier);
+      if (!player) {
+        player = await storage.getPlayerByUsername(identifier);
+      }
       
       if (!player) {
         return res.status(404).json({ message: "Player not found" });
